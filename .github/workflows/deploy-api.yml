@@ -1,0 +1,25 @@
+name: Deploy API to Azure Web App
+on:
+  push:
+    branches: [ main ]
+    paths: [ 'Ey.Api/**', '.github/workflows/deploy-api.yml' ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Restore & Publish
+        working-directory: Ey.Api
+        run: |
+          dotnet restore
+          dotnet publish -c Release -o publish
+      - name: Deploy to Azure WebApp
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: eyfit-api-1234               # <-- pon el nombre de tu WebApp
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: Ey.Api/publish
