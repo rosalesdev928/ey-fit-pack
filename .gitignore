@@ -1,0 +1,20 @@
+# --- .NET ---
+**/bin/
+**/obj/
+**/*.user
+**/*.suo
+**/*.userosscache
+**/*.sln.docstates
+Ey.Api/app.db
+Ey.Api/*.db*
+Ey.Api/*.db-shm
+Ey.Api/*.db-wal
+
+# --- Node/Vite ---
+ey-client/node_modules/
+ey-client/dist/
+ey-client/.env
+ey-client/.env.*
+
+# --- VSCode ---
+.vscode/

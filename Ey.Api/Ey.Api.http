@@ -1,0 +1,6 @@
+@Ey.Api_HostAddress = http://localhost:5261
+
+GET {{Ey.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
